@@ -1,0 +1,30 @@
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+
+//making caesar-cipher in JavaScript
+function makeCode(word,keyNo){
+    const alphabets = "ABCDEFGHAIJKLMNOPQRSTUVWXYZ";
+    let alphaNo = 0;
+    let answer = "";
+    for(let i=0; i<word.length; i++){
+        alphaNo=alphabets.indexOf(word.substr(i,1));
+        answer+=alphabets.substr((alphaNo-keyNo)%27,1);     
+    }
+    return answer;
+}
+
+//decoding caesar-cipher in JavaScript
+function decode(word,keyNo){
+    const alphabets = "ABCDEFGHAIJKLMNOPQRSTUVWXYZ";
+    let alphaNo = 0;
+    let answer = "";
+    for(let i=0; i<word.length; i++){
+        alphaNo=alphabets.indexOf(word.substr(i,1));
+        answer+=alphabets.substr((alphaNo+keyNo)%27,1);     
+    }
+    return answer;
+}
+
+//example
+console.log(makeCode("COCOA",3));//=>ZLZLK
+console.log(decode("ZLZLX",3));//=>COCOA
